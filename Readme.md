@@ -16,7 +16,7 @@ Ted-AI is designed using a modular architecture. Each component has a specific r
 
 ---
 
-## High-Level Architecture
+## Architecture
 
 ```text
                                     ┌─────────────────────┐
