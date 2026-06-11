@@ -1,6 +1,6 @@
 from rich import print
-from objective_manager import *
-from llm import ask_llm
+from core.objective_manager import *
+from core.llm import ask_llm
 from rag import search
 
 while True:
