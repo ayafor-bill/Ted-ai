@@ -515,6 +515,8 @@ class EvidenceItem:
     id: int
     evidence_type: str
     confidence_level: float
+    title: Optional[str] = None
+    description: Optional[str] = None
     affected_endpoint: Optional[str] = None
     related_hypotheses: List[int] = None
 

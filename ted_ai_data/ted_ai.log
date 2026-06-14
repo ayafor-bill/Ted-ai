@@ -25,3 +25,48 @@
 2026-06-14 02:47:13,515 - [ted_ai.database] - INFO - Created objective: Identify Injection Endpoints in engagement 1
 2026-06-14 02:47:18,950 - [ted_ai.cli] - ERROR - Analysis error: Parent instance <Engagement at 0x21cde840710> is not bound to a Session; lazy load operation of attribute 'objectives' cannot proceed (Background on this error at: https://sqlalche.me/e/21/bhk3)
 2026-06-14 02:50:36,836 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 02:53:51,117 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 02:53:51,117 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 02:53:51,117 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 02:53:51,118 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 02:53:51,852 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 02:53:51,884 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 02:54:06,262 - [ted_ai.database] - ERROR - Database error: name 'Engagement' is not defined
+2026-06-14 02:54:06,264 - [ted_ai.cli] - ERROR - Analysis error: name 'Engagement' is not defined
+2026-06-14 03:02:17,176 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 03:02:18,756 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 03:02:18,756 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 03:02:18,756 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 03:02:18,757 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 03:02:19,427 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 03:02:19,459 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 03:02:25,929 - [ted_ai.cli] - ERROR - Analysis error: Parent instance <Engagement at 0x277da5b8050> is not bound to a Session; lazy load operation of attribute 'objectives' cannot proceed (Background on this error at: https://sqlalche.me/e/21/bhk3)
+2026-06-14 03:04:24,451 - [ted_ai.database] - INFO - Created objective: Identify SQL Injection in engagement 1
+2026-06-14 03:04:39,247 - [ted_ai.cli] - ERROR - Analysis error: Parent instance <Engagement at 0x277da42a2c0> is not bound to a Session; lazy load operation of attribute 'objectives' cannot proceed (Background on this error at: https://sqlalche.me/e/21/bhk3)
+2026-06-14 03:07:49,527 - [ted_ai.cli] - ERROR - Analysis error: Parent instance <Engagement at 0x277da429cd0> is not bound to a Session; lazy load operation of attribute 'objectives' cannot proceed (Background on this error at: https://sqlalche.me/e/21/bhk3)
+2026-06-14 03:08:52,400 - [ted_ai.cli] - ERROR - Analysis error: Parent instance <Engagement at 0x277da172cf0> is not bound to a Session; lazy load operation of attribute 'objectives' cannot proceed (Background on this error at: https://sqlalche.me/e/21/bhk3)
+2026-06-14 03:18:19,574 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 03:18:21,433 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 03:18:21,433 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 03:18:21,434 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 03:18:21,434 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 03:18:22,113 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 03:18:22,142 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 03:18:43,310 - [ted_ai.reasoning_engine] - INFO - Agent evidence completed analysis
+2026-06-14 03:18:43,311 - [ted_ai.reasoning_engine] - INFO - Agent hypothesis completed analysis
+2026-06-14 03:18:43,311 - [ted_ai.reasoning_engine] - INFO - Agent priority completed analysis
+2026-06-14 03:24:24,096 - [ted_ai.database] - INFO - Added evidence: SQL Injection in Login Form (confidence: 0.0) to engagement 1
+2026-06-14 03:24:51,929 - [ted_ai.reasoning_engine] - ERROR - Agent evidence analysis failed: EvidenceItem.__init__() got an unexpected keyword argument 'title'
+2026-06-14 03:24:51,929 - [ted_ai.reasoning_engine] - INFO - Agent hypothesis completed analysis
+2026-06-14 03:24:51,930 - [ted_ai.reasoning_engine] - INFO - Agent priority completed analysis
+2026-06-14 03:26:33,336 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 03:26:35,507 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 03:26:35,507 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 03:26:35,507 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 03:26:35,508 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 03:26:36,272 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 03:26:36,303 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 03:26:43,646 - [ted_ai.reasoning_engine] - ERROR - Agent evidence analysis failed: EvidenceItem.__init__() got an unexpected keyword argument 'title'
+2026-06-14 03:26:43,646 - [ted_ai.reasoning_engine] - INFO - Agent hypothesis completed analysis
+2026-06-14 03:26:43,646 - [ted_ai.reasoning_engine] - INFO - Agent priority completed analysis
+2026-06-14 03:28:27,660 - [ted_ai.database] - INFO - Database connections closed

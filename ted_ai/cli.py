@@ -29,8 +29,7 @@ except ImportError:
 
 from ted_ai.database import DatabaseManager, DatabaseConfig
 from ted_ai.models import (
-    EngagementStatus, SeverityLevel, EvidenceType
-)
+    EngagementStatus, SeverityLevel, EvidenceType, Engagement, Objective, Evidence, Finding, Hypothesis)
 from ted_ai.reasoning_engine import ReasoningEngine
 
 # Setup logging
@@ -412,7 +411,14 @@ class TEDCLIInterface:
         try:
             # Fetch engagement with eager loading to avoid session issues
             with self.db.get_session() as session:
-                engagement = session.query(Engagement).filter(
+                from sqlalchemy.orm import joinedload
+                
+                engagement = session.query(Engagement).options(
+                    joinedload(Engagement.objectives),
+                    joinedload(Engagement.evidence),
+                    joinedload(Engagement.findings),
+                    joinedload(Engagement.hypotheses)
+                ).filter(
                     Engagement.id == self.state.current_engagement_id
                 ).first()
             
@@ -422,11 +428,44 @@ class TEDCLIInterface:
             
             # Build context while session is active
             context = {
-                "engagement": engagement.to_dict() if hasattr(engagement, 'to_dict') else {},
-                "objectives": [obj.to_dict() for obj in engagement.objectives],
-                "evidence": [ev.to_dict() for ev in engagement.evidence],
-                "findings": [f.to_dict() for f in engagement.findings],
-                "hypotheses": [h.to_dict() for h in engagement.hypotheses],
+                "engagement": {
+                    "id": engagement.id,
+                    "target_name": engagement.target_name,
+                    "status": engagement.status.value,
+                },
+                "objectives": [
+                    {
+                        "id": obj.id,
+                        "title": obj.title,
+                        "status": obj.status,
+                        "progress": obj.progress_percentage,
+                    }
+                    for obj in engagement.objectives
+                ],
+                "evidence": [
+                    {
+                        "id": ev.id,
+                        "title": ev.evidence_type.value if hasattr(ev.evidence_type, 'title') else str(ev.evidence_type),
+                        "confidence_level": ev.confidence_level,
+                    }
+                    for ev in engagement.evidence
+                ],
+                "findings": [
+                    {
+                        "id": f.id,
+                        "title": f.title,
+                        "severity": f.severity.value if hasattr(f.severity, 'title') else str(f.severity),
+                    }
+                    for f in engagement.findings
+                ],
+                "hypotheses": [
+                    {
+                        "id": h.id,
+                        "title": h.title,
+                        "status": h.status,
+                    }
+                    for h in engagement.hypotheses
+                ],
             }
             
             # Now analyze (outside session)
