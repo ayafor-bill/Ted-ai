@@ -296,46 +296,39 @@ class TEDCLIInterface:
         if not self.state.current_engagement_id:
             self.print("[red]✗ No engagement selected[/red]")
             return
-
-        objective_id = Prompt.ask("[cyan]Objective ID to delete[/cyan]") if HAS_RICH else input("Objective ID to delete: ")
-        
+  
         try:
             # Show current objective details before deletion
-            objective = self.db.get_engagement_objective(self.state.current_engagement_id)
-            
-            if not objective:
-                self.print("[red]✗ Objective not found[/red]")
-                return
-            
-            self.print_table([
-                {
-                    "ID": objective.id,
-                    "Title": objective.title,
-                    "Type": objective.objective_type,
-                    "Status": objective.status,
-                }
-                for obj in objectives
-            ], "Objective")
-            
-            # Get objective ID to delete
-            objective_id = Prompt.ask("[cyan]Enter the ID of the objective to delete[/cyan]") if HAS_RICH else input("Objective ID to delete: ")
-            
-            try:
-                objective_id = int(objective_id_str)
-            except ValueError:
-                self.print("[red]✗ Invalid objective ID[/red]")
-                return
-            
-            # Confirm deletion
-            confirm = Confirm.ask(f"[yellow]Delete objective {objective_id}?[/yellow]")
-            
-            if not confirm:
-                self.print("[yellow]Cancelled[yellow]")
-                return
-            
-            # Delete objective
             with self.db.get_session() as session:
-                objective = session.query(Objective).filter(
+                objectives = session.query(Objective).filter(
+                    Objective.engagement_id == self.state.current_engagement_id
+                ).all()
+                
+                if not objectives:
+                    self.print("[red]✗ Objective not found[/red]")
+                    return
+                
+                self.print_table([
+                    {
+                        "ID": obj.id,
+                        "Title": obj.title,
+                        "Type": obj.objective_type,
+                        "Status": obj.status,
+                    }
+                    for obj in objectives
+                ], "Objectives")
+                
+                # Get objective ID to delete
+                objective_id = Prompt.ask("[cyan]Objective ID to delete[/cyan]") if HAS_RICH else input("Objective ID to delete: ")
+                
+                try:
+                    objective_id = int(objective_id_str)
+                except ValueError:
+                    self.print("[red]✗ Invalid objective ID[/red]")
+                    return
+                
+                # Find the objective
+                objective = session.quesry(Objective).filter(
                     Objective.id == objective_id,
                     Objective.engagement_id == self.state.current_engagement_id
                 ).first()
@@ -344,10 +337,17 @@ class TEDCLIInterface:
                     self.print("[red]✗ Objective not found[/red]")
                     return
                 
+                # Confirm deletion
+                confirm = Confirm.ask(f"[yellow]Delete objective {objective_id}?[/yellow]") if HAS_RICH else input(f"Delete objective '{objective.title}'? (y/n): ").lower() == 'y'
+                
+                if not confirm:
+                    self.print("[yellow]Cancelled[yellow]")
+                    return
+                
                 obj_title = objective.title
                 session.delete(objective)
                 session.commit()
-                
+            
             self.print(f"[green]✓ Objective deleted: {obj_title} (ID: {objective_id})[/green]")
    
         except Exception as e:

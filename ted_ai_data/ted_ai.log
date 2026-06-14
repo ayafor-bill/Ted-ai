@@ -93,3 +93,13 @@
 2026-06-14 03:38:37,407 - [ted_ai.database] - INFO - Created objective: Authentication Testing in engagement 1
 2026-06-14 03:39:16,626 - [ted_ai.database] - INFO - Created objective: Injection & Input Validation in engagement 1
 2026-06-14 03:39:55,197 - [ted_ai.database] - INFO - Created objective: API Endpoint Testing in engagement 1
+2026-06-14 03:58:30,644 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 03:58:32,754 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 03:58:32,754 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 03:58:32,754 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 03:58:32,755 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 03:58:33,415 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 03:58:33,442 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 03:59:09,281 - [ted_ai.cli] - ERROR - Error deleting objective: 'DatabaseManager' object has no attribute 'get_engagement_objective'
+2026-06-14 04:09:02,359 - [ted_ai.cli] - ERROR - Error deleting objective: 'DatabaseManager' object has no attribute 'get_engagement_objective'
+2026-06-14 04:09:09,369 - [ted_ai.database] - INFO - Database connections closed
