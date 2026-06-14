@@ -1,4 +1,4 @@
-# Ted-AI 2 - Supposed Cyber Tool
+# Ted-AI 2 - Local Running Pestest Copilot using Ollama
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
