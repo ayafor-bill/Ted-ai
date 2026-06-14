@@ -1,4 +1,4 @@
-# Ted-AI Enhanced - Next Generation Security Assessment Copilot
+# Ted-AI 2 - Supposed Cyber Tool
 
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -516,7 +516,7 @@ Engagement
   - Statistics aggregation and analysis
   - Batch operation support
 
-- **Multi-Agent Reasoning Engine**
+- **Reasoning Engine**
   - Evidence Analysis Agent (pattern detection, gap identification)
   - Hypothesis Validation Agent (evidence-based scoring)
   - Priority Agent (focus optimization, resource allocation)
@@ -524,7 +524,7 @@ Engagement
   - Session tracking with audit trails
   - Extensible agent framework for custom analysis
 
-- **Rich Interactive CLI**
+- **Interactive CLI**
   - Beautiful terminal output with Rich library
   - 15+ interactive commands
   - Real-time table formatting
