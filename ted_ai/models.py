@@ -270,7 +270,7 @@ class Hypothesis(Base):
     estimated_effort = Column(String(20), nullable=True)  # low, medium, high, critical_path
     
     # Relationships
-    supporting_evidence = relationship("Evidence", secondary=evidence_hypothesis)
+    supporting_evidence = relationship("Evidence", secondary=evidence_hypothesis, overlaps="related_hypotheses", back_populates="related_hypotheses")
     related_finding = relationship("Finding", back_populates="validated_hypothesis")
     
     # Timestamps

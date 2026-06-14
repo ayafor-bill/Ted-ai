@@ -410,9 +410,17 @@ class TEDCLIInterface:
             return
 
         try:
-            engagement = self.db.get_engagement(self.state.current_engagement_id)
+            # Fetch engagement with eager loading to avoid session issues
+            with self.db.get_session() as session:
+                engagement = session.query(Engagement).filter(
+                    Engagement.id == self.state.current_engagement_id
+                ).first()
             
-            # Build context for analysis
+            if not engagement:
+                self.print("[red]✗ Engagement not found[/red]")
+                return
+            
+            # Build context while session is active
             context = {
                 "engagement": engagement.to_dict() if hasattr(engagement, 'to_dict') else {},
                 "objectives": [obj.to_dict() for obj in engagement.objectives],
@@ -421,9 +429,8 @@ class TEDCLIInterface:
                 "hypotheses": [h.to_dict() for h in engagement.hypotheses],
             }
             
+            # Now analyze (outside session)
             self.print("[cyan]Analyzing engagement...[/cyan]")
-            
-            # Run analysis
             analysis = self.reasoning_engine.analyze_engagement(context)
             
             # Generate recommendations

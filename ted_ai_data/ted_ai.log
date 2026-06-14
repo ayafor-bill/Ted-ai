@@ -24,3 +24,4 @@
 2026-06-14 02:44:37,036 - [ted_ai.database] - INFO - Created engagement: paypal.com (ID: 1)
 2026-06-14 02:47:13,515 - [ted_ai.database] - INFO - Created objective: Identify Injection Endpoints in engagement 1
 2026-06-14 02:47:18,950 - [ted_ai.cli] - ERROR - Analysis error: Parent instance <Engagement at 0x21cde840710> is not bound to a Session; lazy load operation of attribute 'objectives' cannot proceed (Background on this error at: https://sqlalche.me/e/21/bhk3)
+2026-06-14 02:50:36,836 - [ted_ai.database] - INFO - Database connections closed
