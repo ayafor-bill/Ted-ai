@@ -27,11 +27,11 @@ except ImportError:
     HAS_RICH = False
     print("Warning: Rich library not installed. Using basic output.")
 
-from database import DatabaseManager, DatabaseConfig
-from models import (
+from ted_ai.database import DatabaseManager, DatabaseConfig
+from ted_ai.models import (
     EngagementStatus, SeverityLevel, EvidenceType
 )
-from core.reasoning_engine import ReasoningEngine
+from ted_ai.reasoning_engine import ReasoningEngine
 
 # Setup logging
 logging.basicConfig(
