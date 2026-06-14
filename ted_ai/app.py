@@ -31,8 +31,8 @@ class AppConfig:
     max_overflow: int = 10
     
     # AI Model settings
-    ai_model: str = "qwen3:8b"     # FOR EDITORS: You cound use any llm you think would be good for this part
-    reasoning_model: str = "qwen3:8b"
+    ai_model: str = "qwen3.5:9b"     # FOR EDITORS: You cound use any llm you think would be good for this part
+    reasoning_model: str = "qwen3.5:8b"
     api_endpoint: str = "http://localhost:11434"     # Ollama endpoint
     api_key: Optional[str] = None
     
@@ -65,7 +65,8 @@ class AppConfig:
         config = cls(
             database_path=os.getenv("TED_DB_PATH", "ted_ai.db"),
             echo_sql=os.getenv("TED_ECHO_SQL", "false").lower() == "true",
-            ai_model=os.getenv("TED_AI_MODEL", "qwen:8b"),
+            ai_model=os.getenv("TED_AI_MODEL", "qwen3.5:9b"),
+            reasoning_model=os.getenv("TED_REASONING_MODEL", "qwen3.5:8b"),
             api_endpoint=os.getenv("TED_API_ENDPOINT", "http://localhost:11434"),
             debug_mode=os.getenv("TED_DEBUG", "false").lower() == "true",
             log_level=os.getenv("TED_LOG_LEVEL", "INFO"),
