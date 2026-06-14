@@ -30,14 +30,14 @@ A tool used for bug bounty and penetration testing copilot running locally on th
 - Query optimization with indexing
 - Data validation and integrity
 
-### Intelligent Multi-Agent Analysis
+### Multi-Agent Analysis
 - Evidence Analysis Agent (pattern detection, gap identification)
 - Hypothesis Validation Agent (evidence-based scoring)
 - Priority Agent (focus optimization)
 - Automated recommendation generation
 - Session logging and audit trails
 
-### Beautiful Interactive CLI
+### Interactive CLI
 - Rich terminal formatting (colors, tables, panels)
 - 15+ interactive commands
 - Context-aware help system
