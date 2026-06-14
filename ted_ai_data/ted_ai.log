@@ -70,3 +70,26 @@
 2026-06-14 03:26:43,646 - [ted_ai.reasoning_engine] - INFO - Agent hypothesis completed analysis
 2026-06-14 03:26:43,646 - [ted_ai.reasoning_engine] - INFO - Agent priority completed analysis
 2026-06-14 03:28:27,660 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 03:28:45,276 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 03:28:45,276 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 03:28:45,277 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 03:28:45,277 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 03:28:45,890 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 03:28:45,918 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 03:28:59,979 - [ted_ai.reasoning_engine] - ERROR - Agent evidence analysis failed: EvidenceItem.__init__() missing 1 required positional argument: 'evidence_type'
+2026-06-14 03:28:59,979 - [ted_ai.reasoning_engine] - INFO - Agent hypothesis completed analysis
+2026-06-14 03:28:59,980 - [ted_ai.reasoning_engine] - INFO - Agent priority completed analysis
+2026-06-14 03:34:05,784 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 03:34:07,433 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 03:34:07,434 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 03:34:07,434 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 03:34:07,434 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 03:34:08,054 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 03:34:08,081 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 03:34:30,946 - [ted_ai.reasoning_engine] - INFO - Agent evidence completed analysis
+2026-06-14 03:34:30,947 - [ted_ai.reasoning_engine] - INFO - Agent hypothesis completed analysis
+2026-06-14 03:34:30,947 - [ted_ai.reasoning_engine] - INFO - Agent priority completed analysis
+2026-06-14 03:37:56,383 - [ted_ai.database] - INFO - Created objective: Reconnaissance & subdimain Discovery in engagement 1
+2026-06-14 03:38:37,407 - [ted_ai.database] - INFO - Created objective: Authentication Testing in engagement 1
+2026-06-14 03:39:16,626 - [ted_ai.database] - INFO - Created objective: Injection & Input Validation in engagement 1
+2026-06-14 03:39:55,197 - [ted_ai.database] - INFO - Created objective: API Endpoint Testing in engagement 1

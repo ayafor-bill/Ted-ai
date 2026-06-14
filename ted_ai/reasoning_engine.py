@@ -93,10 +93,24 @@ class EvidenceAnalysisAgent(ReasoningAgent):
         evidence_list = context.get("evidence", [])
         
         # Convert dict evidence to objects for analysis
-        evidence_items = [
-            EvidenceItem(**ev) if isinstance(ev, dict) else ev 
-            for ev in evidence_list
-        ]
+        evidence_items = []
+        for ev in evidence_list:
+            if isinstance(ev, dict):
+                # Map 'type' to 'evidence_type' if needed
+                if 'type' in ev and 'evidence_type' not in ev:
+                    ev['evidence_type'] = ev.pop('type')
+                # Create proper fields, use defaults if missing ones
+                evidence_items.append(EvidenceItem(
+                    id=ev.get("id", 0),
+                    evidence_type=ev.get("evidence_type", "notes"),
+                    confidence_level=ev.get("confidence_level", 0.5),
+                    title=ev.get("title"),
+                    description=ev.get("description"),
+                    affected_endpoint=ev.get("affected_endpoint"),
+                    related_hypotheses=ev.get("related_hypotheses", [])
+                ))
+            else:
+                evidence_items.append(ev)
 
         analysis = {
             "total_evidence": len(evidence_items),

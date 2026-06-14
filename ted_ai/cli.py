@@ -12,6 +12,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional, List, Dict, Any
 from enum import Enum
+from rich.prompt import Prompt, Confirm
 
 # Rich for beautiful terminal output
 try:
@@ -288,7 +289,71 @@ class TEDCLIInterface:
             
         except Exception as e:
             self.print(f"[red]✗ Error listing objectives: {str(e)}[/red]")
+            
+    # Adding delete and update commands for objectives would follow a similar pattern to the above methods, with appropriate prompts and database interactions.
+    def cmd_delete_objective(self):
+        """Delete an objective"""
+        if not self.state.current_engagement_id:
+            self.print("[red]✗ No engagement selected[/red]")
+            return
 
+        objective_id = Prompt.ask("[cyan]Objective ID to delete[/cyan]") if HAS_RICH else input("Objective ID to delete: ")
+        
+        try:
+            # Show current objective details before deletion
+            objective = self.db.get_engagement_objective(self.state.current_engagement_id)
+            
+            if not objective:
+                self.print("[red]✗ Objective not found[/red]")
+                return
+            
+            self.print_table([
+                {
+                    "ID": objective.id,
+                    "Title": objective.title,
+                    "Type": objective.objective_type,
+                    "Status": objective.status,
+                }
+                for obj in objectives
+            ], "Objective")
+            
+            # Get objective ID to delete
+            objective_id = Prompt.ask("[cyan]Enter the ID of the objective to delete[/cyan]") if HAS_RICH else input("Objective ID to delete: ")
+            
+            try:
+                objective_id = int(objective_id_str)
+            except ValueError:
+                self.print("[red]✗ Invalid objective ID[/red]")
+                return
+            
+            # Confirm deletion
+            confirm = Confirm.ask(f"[yellow]Delete objective {objective_id}?[/yellow]")
+            
+            if not confirm:
+                self.print("[yellow]Cancelled[yellow]")
+                return
+            
+            # Delete objective
+            with self.db.get_session() as session:
+                objective = session.query(Objective).filter(
+                    Objective.id == objective_id,
+                    Objective.engagement_id == self.state.current_engagement_id
+                ).first()
+                
+                if not objective:
+                    self.print("[red]✗ Objective not found[/red]")
+                    return
+                
+                obj_title = objective.title
+                session.delete(objective)
+                session.commit()
+                
+            self.print(f"[green]✓ Objective deleted: {obj_title} (ID: {objective_id})[/green]")
+   
+        except Exception as e:
+            self.print(f"[red]✗ Error deleting objective: {str(e)}[/red]")
+            logger.error(f"Error deleting objective: {str(e)}")
+            
     # ==================== Evidence Commands ====================
 
     def cmd_add_evidence(self):
@@ -557,6 +622,7 @@ class TEDCLIInterface:
 [bold]Testing Objectives:[/bold]
   obj-add     - Add testing objective
   obj-list    - List objectives
+  obj-del     - Delete an objective
 
 [bold]Evidence Collection:[/bold]
   ev-add      - Add evidence
@@ -594,6 +660,7 @@ class TEDCLIInterface:
             "status": lambda: self.print(f"Current engagement: {self.state.current_engagement_name or 'None'}"),
             "obj-add": self.cmd_add_objective,
             "obj-list": self.cmd_list_objectives,
+            "obj-del": self.cmd_delete_objective,
             "ev-add": self.cmd_add_evidence,
             "ev-list": self.cmd_list_evidence,
             "find-list": self.cmd_list_findings,
