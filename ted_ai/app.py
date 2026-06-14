@@ -51,11 +51,11 @@ class AppConfig:
         """Get database path (cross-platform)"""
         return str(Path(self.database_path).resolve())
     
-    def get_data_dir(self) -> str:
+    def get_data_dir(self) -> Path:
         """Get data directory (cross-platform)"""
         return Path(self.data_dir).resolve()
     
-    def get_cache_dir(self) -> str:
+    def get_cache_dir(self) -> Path:
         """Get cache directory (cross-platform)"""
         return Path(self.cache_dir).resolve()
 
@@ -109,9 +109,9 @@ class AppConfig:
     
     def setup_directories(self):
         """Create necessary directories"""
-        Path(self.data_dir).mkdir(parents=True, exist_ok=True)
-        Path(self.cache_dir).mkdir(parents=True, exist_ok=True)
-        logger.info(f"Directories setup: {self.data_dir}, {self.cache_dir}")
+        self.get_data_dir().mkdir(parents=True, exist_ok=True)
+        self.get_cache_dir().mkdir(parents=True, exist_ok=True)
+        logger.info(f"Directories setup: {self.get_data_dir()}, {self.get_cache_dir()}")
 
 
 class TEDApplication:
@@ -119,8 +119,8 @@ class TEDApplication:
     
     def __init__(self, config: Optional[AppConfig] = None):
         self.config = config or AppConfig.from_env()
-        self._setup_logging()
         self.config.setup_directories()
+        self._setup_logging()
         self.logger = logging.getLogger(__name__)
         
         logger.info("Ted-AI application initialized")
@@ -165,7 +165,7 @@ class TEDApplication:
     
     def health_check(self) -> Dict[str, Any]:
         """Check application health"""
-        from database import DatabaseManager, DatabaseConfig
+        from ted_ai.database import DatabaseManager, DatabaseConfig
         
         health = {
             "status": "healthy",
