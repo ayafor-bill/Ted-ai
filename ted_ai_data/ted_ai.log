@@ -8,3 +8,19 @@
 2026-06-14 02:34:01,765 - [ted_ai.app] - INFO - Ted-AI application initialized
 2026-06-14 02:34:01,765 - [ted_ai.app] - INFO - Database: ted_ai.db
 2026-06-14 02:34:01,767 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 02:36:02,255 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 02:36:02,256 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 02:36:02,256 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 02:36:02,256 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 02:36:02,883 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 02:36:02,910 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 02:38:30,995 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 02:41:41,170 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 02:41:41,171 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 02:41:41,171 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 02:41:41,171 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 02:41:41,794 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 02:41:41,822 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 02:44:37,036 - [ted_ai.database] - INFO - Created engagement: paypal.com (ID: 1)
+2026-06-14 02:47:13,515 - [ted_ai.database] - INFO - Created objective: Identify Injection Endpoints in engagement 1
+2026-06-14 02:47:18,950 - [ted_ai.cli] - ERROR - Analysis error: Parent instance <Engagement at 0x21cde840710> is not bound to a Session; lazy load operation of attribute 'objectives' cannot proceed (Background on this error at: https://sqlalche.me/e/21/bhk3)
