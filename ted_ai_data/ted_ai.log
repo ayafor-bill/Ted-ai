@@ -103,3 +103,11 @@
 2026-06-14 03:59:09,281 - [ted_ai.cli] - ERROR - Error deleting objective: 'DatabaseManager' object has no attribute 'get_engagement_objective'
 2026-06-14 04:09:02,359 - [ted_ai.cli] - ERROR - Error deleting objective: 'DatabaseManager' object has no attribute 'get_engagement_objective'
 2026-06-14 04:09:09,369 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 04:09:11,260 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 04:09:11,260 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 04:09:11,261 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 04:09:11,261 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 04:09:11,889 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 04:09:11,917 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 04:09:26,283 - [ted_ai.database] - ERROR - Database error: name 'objective_id_str' is not defined
+2026-06-14 04:09:26,285 - [ted_ai.cli] - ERROR - Error deleting objective: name 'objective_id_str' is not defined
