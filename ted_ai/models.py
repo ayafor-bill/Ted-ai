@@ -58,10 +58,7 @@ class Engagement(Base):
     Central entity that tracks the overall assessment scope and status.
     """
     __tablename__ = "engagements"
-    __table_args__ = (
-        Index('idx_target_status', 'target_name', 'status'),
-        Index('idx_created_date', 'created_at'),
-    )
+    __table_args__ = ()
 
     id = Column(Integer, primary_key=True)
     target_name = Column(String(255), nullable=False, unique=True)
@@ -122,7 +119,7 @@ class Objective(Base):
     """
     __tablename__ = "objectives"
     __table_args__ = (
-        Index('idx_engagement_id', 'engagement_id'),
+        Index('idx_objective_engagement_id', 'engagement_id'),
         Index('idx_priority', 'priority'),
     )
 
@@ -244,7 +241,7 @@ class Hypothesis(Base):
     """
     __tablename__ = "hypotheses"
     __table_args__ = (
-        Index('idx_engagement_id', 'engagement_id'),
+        Index('idx_hypothesis_engagement_id', 'engagement_id'),
         Index('idx_status', 'status'),
     )
 
@@ -302,8 +299,8 @@ class Finding(Base):
     """
     __tablename__ = "findings"
     __table_args__ = (
-        Index('idx_engagement_severity', 'engagement_id', 'severity'),
-        Index('idx_status', 'status'),
+        Index('idx_findings_engagement_severity', 'engagement_id', 'severity'),
+        Index('idx_findings_status', 'status'),
     )
 
     id = Column(Integer, primary_key=True)
@@ -375,7 +372,7 @@ class SessionLog(Base):
     """
     __tablename__ = "session_logs"
     __table_args__ = (
-        Index('idx_engagement_session', 'engagement_id', 'session_date'),
+        Index('idx_session_logs_engagement_session', 'engagement_id', 'session_date'),
     )
 
     id = Column(Integer, primary_key=True)

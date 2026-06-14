@@ -1,5 +1,6 @@
-2026-06-14 02:03:22,780 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
-2026-06-14 02:03:22,781 - [ted_ai.app] - INFO - Directories setup: ted_ai_data, ted_ai_cache
-2026-06-14 02:03:22,782 - [ted_ai.app] - INFO - Ted-AI application initialized
-2026-06-14 02:03:22,782 - [ted_ai.app] - INFO - Database: ted_ai.db
-2026-06-14 02:03:22,782 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 02:32:16,716 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 02:32:16,717 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 02:32:16,717 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 02:32:16,717 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 02:32:17,393 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 02:32:17,463 - [ted_ai.database] - INFO - Database connections closed

@@ -16,7 +16,7 @@ from sqlalchemy import create_engine, event, func, desc
 from sqlalchemy.orm import sessionmaker, Session, scoped_session
 from sqlalchemy.pool import StaticPool, QueuePool
 
-from models import (
+from ted_ai.models import (
     Base, Engagement, Objective, Evidence, Finding, Hypothesis,
     SessionLog, EngagementSummary, EngagementStatus, SeverityLevel,
     EvidenceType

@@ -1,1 +1,6 @@
 .env
+
+/ted_ai_cache/
+/ted_ai_data/
+
+ted_ai.db
