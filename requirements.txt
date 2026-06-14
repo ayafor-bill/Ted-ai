@@ -1,0 +1,17 @@
+# Ted-AI Enhanced - Cross-Platform
+SQLAlchemy==2.0.25
+sqlalchemy-utils==0.41.1
+rich==13.8.0
+click==8.4.0
+prompt-toolkit==3.0.41
+aiohttp==3.13.5
+python-dotenv==1.0.0
+pyyaml==6.0.3
+cryptography==41.0.7
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+black==23.12.0
+flake8==6.1.0
+mypy==1.7.1
+isort==5.13.2
