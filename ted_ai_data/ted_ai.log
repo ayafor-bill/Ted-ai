@@ -111,3 +111,4 @@
 2026-06-14 04:09:11,917 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
 2026-06-14 04:09:26,283 - [ted_ai.database] - ERROR - Database error: name 'objective_id_str' is not defined
 2026-06-14 04:09:26,285 - [ted_ai.cli] - ERROR - Error deleting objective: name 'objective_id_str' is not defined
+2026-06-14 04:23:21,997 - [ted_ai.database] - INFO - Database connections closed

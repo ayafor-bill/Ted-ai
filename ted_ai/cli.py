@@ -305,7 +305,7 @@ class TEDCLIInterface:
                 ).all()
                 
                 if not objectives:
-                    self.print("[red]✗ Objective not found[/red]")
+                    self.print("[yellow]✗ Objective not found[/yellow]")
                     return
                 
                 self.print_table([
@@ -319,8 +319,12 @@ class TEDCLIInterface:
                 ], "Objectives")
                 
                 # Get objective ID to delete
-                objective_id = Prompt.ask("[cyan]Objective ID to delete[/cyan]") if HAS_RICH else input("Objective ID to delete: ")
+                if HAS_RICH:
+                    objective_id_str = Prompt.ask("[cyan]Objective ID to delete[/cyan]")
                 
+                else:
+                    objective_id_str = input("Objective ID to delete: ")
+
                 try:
                     objective_id = int(objective_id_str)
                 except ValueError:
@@ -328,7 +332,7 @@ class TEDCLIInterface:
                     return
                 
                 # Find the objective
-                objective = session.quesry(Objective).filter(
+                objective = session.query(Objective).filter(
                     Objective.id == objective_id,
                     Objective.engagement_id == self.state.current_engagement_id
                 ).first()
