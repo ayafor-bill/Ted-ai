@@ -472,106 +472,80 @@ class TEDCLIInterface:
     # ==================== Analysis Commands ====================
 
     def cmd_analyze(self):
-        """Perform engagement analysis"""
+        """Perform grounded engagement analysis via Ted-AI"""
         if not self.state.current_engagement_id:
             self.print("[red]✗ No engagement selected[/red]")
             return
 
         try:
-            # Fetch engagement with eager loading to avoid session issues
             with self.db.get_session() as session:
                 from sqlalchemy.orm import joinedload
-                
+
                 engagement = session.query(Engagement).options(
-                    joinedload(Engagement.objectives),
                     joinedload(Engagement.evidence),
-                    joinedload(Engagement.findings),
-                    joinedload(Engagement.hypotheses)
                 ).filter(
                     Engagement.id == self.state.current_engagement_id
                 ).first()
-            
-            if not engagement:
-                self.print("[red]✗ Engagement not found[/red]")
-                return
-            
-            # Build context while session is active
-            context = {
-                "engagement": {
-                    "id": engagement.id,
-                    "target_name": engagement.target_name,
-                    "status": engagement.status.value,
-                },
-                "objectives": [
-                    {
-                        "id": obj.id,
-                        "title": obj.title,
-                        "status": obj.status,
-                        "progress": obj.progress_percentage,
-                    }
-                    for obj in engagement.objectives
-                ],
-                "evidence": [
-                    {
-                        "id": ev.id,
-                        "title": ev.evidence_type.value if hasattr(ev.evidence_type, 'title') else str(ev.evidence_type),
-                        "confidence_level": ev.confidence_level,
-                    }
-                    for ev in engagement.evidence
-                ],
-                "findings": [
-                    {
-                        "id": f.id,
-                        "title": f.title,
-                        "severity": f.severity.value if hasattr(f.severity, 'title') else str(f.severity),
-                    }
-                    for f in engagement.findings
-                ],
-                "hypotheses": [
-                    {
-                        "id": h.id,
-                        "title": h.title,
-                        "status": h.status,
-                    }
-                    for h in engagement.hypotheses
-                ],
+
+                if not engagement:
+                    self.print("[red]✗ Engagement not found[/red]")
+                    return
+
+                context = {
+                    "engagement": {
+                        "id": engagement.id,
+                        "target_name": engagement.target_name,
+                    },
+                    "evidence": [
+                        {
+                            "title": ev.title,
+                            "description": ev.description,
+                            "evidence_type": ev.evidence_type.value if hasattr(ev.evidence_type, "value") else str(ev.evidence_type),
+                            "affected_endpoint": ev.affected_endpoint,
+                            "confidence_level": ev.confidence_level,
+                        }
+                        for ev in engagement.evidence
+                    ],
+                }
+
+            self.print("[cyan]Analyzing with Ted-AI (this may take 10-30s)...[/cyan]")
+            result = self.reasoning_engine.analyze_engagement(context)
+
+            self.state.last_recommendations = {
+                "questions": result.questions,
+                "next_steps": result.next_steps,
             }
-            
-            # Now analyze (outside session)
-            self.print("[cyan]Analyzing engagement...[/cyan]")
-            analysis = self.reasoning_engine.analyze_engagement(context)
-            
-            # Generate recommendations
-            recommendations = self.reasoning_engine.generate_recommendations(
-                context, analysis
-            )
-            
-            self.state.last_recommendations = [asdict(r) for r in recommendations]
-            
-            # Display results
-            self._display_analysis_results(analysis, recommendations)
-            
+
+            self._display_analysis_results(result)
+
+        except ConnectionError as e:
+            self.print(f"[red]✗ {str(e)}[/red]")
         except Exception as e:
             self.print(f"[red]✗ Analysis error: {str(e)}[/red]")
             logger.error(f"Analysis error: {str(e)}")
 
-    def _display_analysis_results(self, analysis: Dict[str, Any], recommendations: List):
-        """Display analysis results"""
+
+    def _display_analysis_results(self, result):
         self.print_panel(
-            f"Analysis completed at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            f"Stage: {result.phase_name}  |  Domains: {', '.join(result.selected_domains) if result.selected_domains else 'none'}  |  {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
             "Analysis Results"
         )
-        
-        if recommendations:
-            self.print("\n[bold green]Recommended Actions:[/bold green]")
-            for i, rec in enumerate(recommendations[:5], 1):
-                priority_emoji = "🔴" if rec.priority <= 1 else "🟡" if rec.priority <= 3 else "🟢"
-                self.print(
-                    f"{priority_emoji} [{i}] {rec.title}\n"
-                    f"    {rec.description}\n"
-                    f"    Effort: {rec.effort_estimate} | "
-                    f"Success: {rec.success_probability:.1%}\n"
-                )
+
+        self.print(f"\n[bold cyan]Analysis:[/bold cyan]\n{result.analysis}\n")
+
+        if result.questions:
+            self.print("[bold yellow]Questions to answer:[/bold yellow]")
+            for i, q in enumerate(result.questions, 1):
+                self.print(f"  {i}. {q}")
+
+        if result.next_steps:
+            self.print("\n[bold green]Next steps:[/bold green]")
+            for i, step in enumerate(result.next_steps, 1):
+                self.print(f"  {i}. {step}")
+
+        if not result.questions and not result.next_steps:
+            self.print("[dim]No structured output parsed — raw model output:[/dim]")
+            self.print(result.raw_response)
 
     # ==================== Statistics Commands ====================
 

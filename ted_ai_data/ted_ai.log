@@ -125,3 +125,22 @@
 2026-06-14 21:14:05,264 - [ted_ai.reasoning_engine] - INFO - Agent hypothesis completed analysis
 2026-06-14 21:14:05,265 - [ted_ai.reasoning_engine] - INFO - Agent priority completed analysis
 2026-06-14 21:30:16,045 - [ted_ai.database] - INFO - Database connections closed
+2026-07-22 22:11:29,528 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-07-22 22:11:29,529 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-07-22 22:11:29,529 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-07-22 22:11:29,529 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-07-22 22:12:13,094 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-07-22 22:12:13,095 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-07-22 22:12:13,095 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-07-22 22:12:13,095 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-07-22 22:12:14,198 - [ted_ai.app] - INFO - Starting CLI interface
+2026-07-22 22:12:14,248 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-07-22 22:12:14,249 - [ted_ai.methodology_loader] - INFO - Loaded methodology document: api_testing_methodology
+2026-07-22 22:12:14,250 - [ted_ai.methodology_loader] - INFO - Loaded methodology document: authentication_testing
+2026-07-22 22:12:14,250 - [ted_ai.methodology_loader] - INFO - Loaded methodology document: jwt_testing
+2026-07-22 22:12:14,251 - [ted_ai.methodology_loader] - INFO - Loaded methodology document: mitre_attack_methodology
+2026-07-22 22:12:14,251 - [ted_ai.methodology_loader] - INFO - Loaded methodology document: session_testing
+2026-07-22 22:12:14,253 - [ted_ai.methodology_loader] - INFO - Loaded methodology document: web_testing_methodology
+2026-07-22 22:15:50,665 - [ted_ai.reasoning_engine] - INFO - Sending domain-selection prompt
+2026-07-22 22:16:33,560 - [ted_ai.llm_client] - ERROR - Ollama generate error: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2026-07-22 22:16:33,562 - [ted_ai.cli] - ERROR - Analysis error: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
