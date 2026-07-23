@@ -112,3 +112,16 @@
 2026-06-14 04:09:26,283 - [ted_ai.database] - ERROR - Database error: name 'objective_id_str' is not defined
 2026-06-14 04:09:26,285 - [ted_ai.cli] - ERROR - Error deleting objective: name 'objective_id_str' is not defined
 2026-06-14 04:23:21,997 - [ted_ai.database] - INFO - Database connections closed
+2026-06-14 21:08:14,117 - [ted_ai.app] - INFO - Logging configured: level=INFO, file=ted_ai_data\ted_ai.log
+2026-06-14 21:08:14,118 - [ted_ai.app] - INFO - Ted-AI application initialized
+2026-06-14 21:08:14,118 - [ted_ai.app] - INFO - Database: ted_ai.db
+2026-06-14 21:08:14,119 - [ted_ai.app] - INFO - AI Model: qwen3.5:9b
+2026-06-14 21:08:15,566 - [ted_ai.app] - INFO - Starting CLI interface
+2026-06-14 21:08:15,644 - [ted_ai.database] - INFO - Database initialized at ted_ai.db
+2026-06-14 21:11:26,425 - [ted_ai.database] - INFO - Added evidence: Subdomains Discovered via DNS Enumeration (confidence: 0.95) to engagement 1
+2026-06-14 21:12:35,662 - [ted_ai.database] - INFO - Added evidence: Technology Stack Identified (confidence: 0.8) to engagement 1
+2026-06-14 21:14:00,315 - [ted_ai.database] - INFO - Added evidence: Hidden Endpoints Discovered (confidence: 0.85) to engagement 1
+2026-06-14 21:14:05,264 - [ted_ai.reasoning_engine] - INFO - Agent evidence completed analysis
+2026-06-14 21:14:05,264 - [ted_ai.reasoning_engine] - INFO - Agent hypothesis completed analysis
+2026-06-14 21:14:05,265 - [ted_ai.reasoning_engine] - INFO - Agent priority completed analysis
+2026-06-14 21:30:16,045 - [ted_ai.database] - INFO - Database connections closed
