@@ -21,7 +21,7 @@ A tool used for bug bounty and penetration testing copilot running locally on th
 
 ---
 
-## ✨ Features
+## Features
 
 ### Enterprise-Grade Database
 - SQLAlchemy ORM with 6+ entities
@@ -38,7 +38,7 @@ A tool used for bug bounty and penetration testing copilot running locally on th
 - Session logging and audit trails
 
 ### Interactive CLI
-- Rich terminal formatting (colors, tables, panels)
+- Terminal formatting (colors, tables, panels)
 - 15+ interactive commands
 - Context-aware help system
 - Real-time progress tracking
@@ -60,7 +60,7 @@ A tool used for bug bounty and penetration testing copilot running locally on th
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### **Windows (PowerShell)**
 ```powershell
@@ -104,7 +104,7 @@ python3 run.py cli
 
 ---
 
-## 📥 Installation
+## Installation
 
 ### Windows Setup
 
@@ -314,7 +314,7 @@ python3 run.py cli
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -357,7 +357,7 @@ TED_AI_MODEL=qwen:14b
 
 ---
 
-## 💻 Usage
+## Usage
 
 ### Starting the CLI
 
@@ -434,7 +434,7 @@ Utility:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### Layered Design
 
@@ -483,7 +483,7 @@ Utility:
 
 ---
 
-## 📚 Data Model
+## Data Model
 
 ```
 Engagement
@@ -496,9 +496,9 @@ Engagement
 
 ---
 
-## 📊 Changelog
+## Changelog
 
-### [2.0 Enhanced] - 2024-06-11
+### [2.0 Enhanced] - 2026-06-11
 
 #### Added
 - **Sophisticated SQLAlchemy ORM Models**
@@ -601,64 +601,7 @@ Engagement
 
 ---
 
-## 🔧 Troubleshooting
-
-### Issue: "ModuleNotFoundError: No module named 'ted_ai'"
-
-**Solution:**
-```powershell
-# Make sure you're in the Ted-ai directory
-cd Ted-ai
-
-# Activate virtual environment
-.\venv\Scripts\Activate.ps1
-
-# Install requirements
-pip install -r requirements.txt
-```
-
-### Issue: "ConnectionRefusedError: [Errno 111] Connection refused" (Ollama)
-
-**Solution:**
-1. Make sure Ollama is running: `ollama serve`
-2. Check endpoint in `.env`: `TED_API_ENDPOINT=http://localhost:11434`
-3. Verify model exists: `ollama list`
-
-### Issue: "FileNotFoundError: [Errno 2] No such file or directory: 'ted_ai.db'"
-
-**Solution:**
-```powershell
-# Create data directory
-mkdir ted_ai_data
-
-# Run again
-python run.py cli
-```
-
-### Issue: Virtual Environment Activation Fails (Windows)
-
-**Solution:**
-```powershell
-# Set execution policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Try activation again
-.\venv\Scripts\Activate.ps1
-```
-
-### Issue: "python: command not found" (Linux)
-
-**Solution:**
-```bash
-# Use python3 instead
-python3 -m venv venv
-source venv/bin/activate
-python3 run.py cli
-```
-
----
-
-## 📋 System Requirements
+## System Requirements
 
 | Requirement | Minimum | Recommended |
 |-------------|---------|------------|
@@ -670,7 +613,7 @@ python3 run.py cli
 
 ---
 
-## 🚀 Advanced Usage
+## Advanced Usage
 
 ### Using Different Model Sizes
 
@@ -683,30 +626,6 @@ TED_AI_MODEL=qwen:14b
 
 # Run Ted-AI
 python run.py cli
-```
-
-### Enable Debug Mode
-
-```bash
-# Edit .env
-TED_DEBUG=true
-TED_LOG_LEVEL=DEBUG
-
-# Run
-python run.py cli
-
-# Check logs
-tail -f ted_ai_data/ted_ai.log
-```
-
-### Export Engagement Data
-
-```bash
-# Backup database
-cp ted_ai.db ted_ai-backup.db
-
-# Export to SQL
-sqlite3 ted_ai.db ".dump" > backup.sql
 ```
 
 ---
@@ -729,24 +648,6 @@ To add custom analysis agents:
 2. Implement `analyze()` and `generate_recommendations()` methods
 3. Register in `ReasoningEngine.agents` dictionary
 4. Add CLI command if user-facing
-
----
-
-## 📄 License
-
-MIT License - See LICENSE file for details
-
----
-
-## 🙏 Acknowledgments
-
-This enhanced version builds upon foundational architecture with significant improvements to:
-- Code organization and maintainability
-- Database design and optimization
-- User interface and experience
-- Reasoning capabilities
-- Cross-platform support
-- Enterprise-grade standards
 
 ---
 
