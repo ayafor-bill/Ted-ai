@@ -144,3 +144,4 @@
 2026-07-22 22:15:50,665 - [ted_ai.reasoning_engine] - INFO - Sending domain-selection prompt
 2026-07-22 22:16:33,560 - [ted_ai.llm_client] - ERROR - Ollama generate error: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
 2026-07-22 22:16:33,562 - [ted_ai.cli] - ERROR - Analysis error: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/generate
+2026-07-22 22:19:05,340 - [ted_ai.database] - INFO - Database connections closed
