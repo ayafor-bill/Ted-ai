@@ -1,4 +1,5 @@
 .env
+.gitignore
 
 /ted_ai_cache/
 /ted_ai_data/
