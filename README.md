@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform: Windows | Linux | macOS](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue.svg)]()
 
-A tool used for bug bounty and penetration testing copilot running locally on the terminal to make you feel like a real hacker.
+Penetration Testing Copilot, assisting with Workflow automation, report writing and vulnerability tracking.
 
 ## 📋 Table of Contents
 
